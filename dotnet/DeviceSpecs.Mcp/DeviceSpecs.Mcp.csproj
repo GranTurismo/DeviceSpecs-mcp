@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>net10.0;net8.0</TargetFrameworks>
+    <RollForward>Major</RollForward>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <AssemblyName>devicespecs-mcp</AssemblyName>
+    <RootNamespace>DeviceSpecs.Mcp</RootNamespace>
+
+    <!-- NuGet: a framework-dependent .NET tool flagged as an MCP server (shows under the "MCP Server" filter on nuget.org
+         and can be started with `dnx DeviceSpecs.Mcp` or installed with `dotnet tool install -g DeviceSpecs.Mcp`). -->
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>devicespecs-mcp</ToolCommandName>
+    <PackageType>McpServer</PackageType>
+    <PackageId>DeviceSpecs.Mcp</PackageId>
+    <Version>0.1.0</Version>
+    <Title>Device Specs MCP Server</Title>
+    <Authors>GranTurismo</Authors>
+    <Company>GranTurismo</Company>
+    <Description>MCP server for the Device Specs API: look up, search and compare normalized smartphone specifications (10,000+ phones) from Claude, Cursor, VS Code, Visual Studio or any MCP client. Stdio transport.</Description>
+    <PackageProjectUrl>https://ds.gtgroup.dev</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/GranTurismo/DeviceSpecs-mcp</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>AI; MCP; server; stdio; model-context-protocol; smartphone; phone-specs; specifications; devicespecs; gsmarena; hardware; claude; copilot</PackageTags>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include=".mcp\server.json" Pack="true" PackagePath="/.mcp/" />
+    <None Include="README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.14" />
+    <PackageReference Include="ModelContextProtocol" Version="2.4.0" />
+  </ItemGroup>
+
+</Project>

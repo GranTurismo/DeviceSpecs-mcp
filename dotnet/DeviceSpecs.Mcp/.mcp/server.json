@@ -1,0 +1,35 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+  "name": "io.github.granturismo/devicespecs",
+  "description": "Look up, search and compare normalized smartphone specifications (10,000+ phones) via the Device Specs API.",
+  "version": "0.1.0",
+  "repository": {
+    "url": "https://github.com/GranTurismo/DeviceSpecs-mcp",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "nuget",
+      "registryBaseUrl": "https://api.nuget.org",
+      "identifier": "DeviceSpecs.Mcp",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "packageArguments": [],
+      "environmentVariables": [
+        {
+          "name": "DEVICESPECS_API_KEY",
+          "value": "{devicespecs_api_key}",
+          "variables": {
+            "devicespecs_api_key": {
+              "description": "RapidAPI key for the Device Specs API (free tier at https://rapidapi.com/controller2042000/api/gsmarenaparser).",
+              "isRequired": true,
+              "isSecret": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

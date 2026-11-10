@@ -1,32 +1,52 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
   "name": "io.github.granturismo/devicespecs",
   "description": "Look up, search and compare normalized smartphone specifications (10,000+ phones) via the Device Specs API.",
-  "status": "active",
+  "version": "0.1.0",
   "repository": {
     "url": "https://github.com/GranTurismo/DeviceSpecs-mcp",
     "source": "github"
   },
-  "version_detail": {
-    "version": "0.1.0"
-  },
   "packages": [
     {
-      "registry_name": "npm",
-      "name": "@granturismo/devicespecs-mcp",
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "@granturismo/devicespecs-mcp",
       "version": "0.1.0",
-      "runtime_hint": "npx",
-      "environment_variables": [
+      "transport": { "type": "stdio" },
+      "environmentVariables": [
         {
           "name": "DEVICESPECS_API_KEY",
-          "description": "RapidAPI key for the Device Specs API. Free tier at https://rapidapi.com/controller2042000/api/deviceultraparser",
-          "is_required": true,
-          "is_secret": true
+          "description": "RapidAPI key for the Device Specs API. Free tier at https://rapidapi.com/controller2042000/api/gsmarenaparser",
+          "isRequired": true,
+          "isSecret": true
         },
         {
           "name": "DEVICESPECS_BASE_URL",
-          "description": "Override the API gateway base URL (default https://deviceultraparser.p.rapidapi.com/).",
-          "is_required": false
+          "description": "Override the API gateway base URL (default https://gsmarenaparser.p.rapidapi.com/).",
+          "isRequired": false,
+          "isSecret": false
+        }
+      ]
+    },
+    {
+      "registryType": "nuget",
+      "registryBaseUrl": "https://api.nuget.org",
+      "identifier": "DeviceSpecs.Mcp",
+      "version": "0.1.0",
+      "transport": { "type": "stdio" },
+      "environmentVariables": [
+        {
+          "name": "DEVICESPECS_API_KEY",
+          "description": "RapidAPI key for the Device Specs API. Free tier at https://rapidapi.com/controller2042000/api/gsmarenaparser",
+          "isRequired": true,
+          "isSecret": true
+        },
+        {
+          "name": "DEVICESPECS_BASE_URL",
+          "description": "Override the API gateway base URL (default https://gsmarenaparser.p.rapidapi.com/).",
+          "isRequired": false,
+          "isSecret": false
         }
       ]
     }

@@ -1,5 +1,7 @@
 // Dev-only smoke test: spawns the built server over stdio and exercises every tool.
 // Usage: DEVICESPECS_BASE_URL=https://dsapi.gtgroup.dev/ node scripts/smoke.mjs
+// Any stdio server with the same tool contract can be tested, e.g. the .NET build:
+//   MCP_COMMAND=dotnet MCP_ARGS='["dotnet/DeviceSpecs.Mcp/bin/Release/net10.0/devicespecs-mcp.dll"]' node scripts/smoke.mjs
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js";
 
@@ -12,8 +14,8 @@ const check = (name, cond, detail) => {
 
 async function withClient(env, fn) {
   const transport = new StdioClientTransport({
-    command: process.execPath,
-    args: ["dist/index.js"],
+    command: process.env.MCP_COMMAND || process.execPath,
+    args: process.env.MCP_ARGS ? JSON.parse(process.env.MCP_ARGS) : ["dist/index.js"],
     env: { ...process.env, ...env },
     stderr: "pipe",
   });

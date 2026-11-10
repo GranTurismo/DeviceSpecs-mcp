@@ -4,9 +4,9 @@
  */
 import type { ApiDevice } from "./projection.js";
 
-export const DEFAULT_BASE_URL = "https://deviceultraparser.p.rapidapi.com/";
-export const DEFAULT_API_HOST = "deviceultraparser.p.rapidapi.com";
-export const GET_KEY_URL = "https://rapidapi.com/controller2042000/api/deviceultraparser";
+export const DEFAULT_BASE_URL = "https://gsmarenaparser.p.rapidapi.com/";
+export const DEFAULT_API_HOST = "gsmarenaparser.p.rapidapi.com";
+export const GET_KEY_URL = "https://rapidapi.com/controller2042000/api/gsmarenaparser";
 
 const PATHS = {
   devices: "api/values/clean/devices",
