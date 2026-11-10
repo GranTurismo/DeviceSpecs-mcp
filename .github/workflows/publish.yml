@@ -1,5 +1,8 @@
 name: Publish to NPM
 
+# Publishes with npm trusted publishing (OIDC): no token, no one-time password.
+# One-time setup on npmjs.com -> package @granturismo/devicespecs-mcp -> Settings -> Trusted Publisher:
+#   GitHub Actions, organization/user "GranTurismo", repository "DeviceSpecs-mcp", workflow "publish.yml".
 on:
   push:
     tags:
@@ -12,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      id-token: write
+      id-token: write   # required for npm trusted publishing
 
     steps:
       - name: Checkout Code
@@ -24,6 +27,9 @@ jobs:
           node-version: 22.x
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Update npm (trusted publishing needs npm 11.5.1+)
+        run: npm install -g npm@latest && npm --version
+
       - name: Install Dependencies
         run: npm ci
 
@@ -32,5 +38,3 @@ jobs:
 
       - name: Publish to NPM
         run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
