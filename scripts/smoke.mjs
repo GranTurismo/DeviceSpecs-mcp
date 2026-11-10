@@ -1,5 +1,7 @@
 // Dev-only smoke test: spawns the built server over stdio and exercises every tool.
 // Usage: DEVICESPECS_BASE_URL=https://dsapi.gtgroup.dev/ node scripts/smoke.mjs
+// To test through the RapidAPI gateway with your own key (the key stays in your shell):
+//   SMOKE_API_KEY=<rapidapi key> DEVICESPECS_BASE_URL=https://gsmarenaparser.p.rapidapi.com/ node scripts/smoke.mjs
 // Any stdio server with the same tool contract can be tested, e.g. the .NET build:
 //   MCP_COMMAND=dotnet MCP_ARGS='["dotnet/DeviceSpecs.Mcp/bin/Release/net10.0/devicespecs-mcp.dll"]' node scripts/smoke.mjs
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
@@ -37,7 +39,7 @@ const parse = (res) => {
   }
 };
 
-await withClient({ DEVICESPECS_BASE_URL: baseUrl, DEVICESPECS_API_KEY: "" }, async (client) => {
+await withClient({ DEVICESPECS_BASE_URL: baseUrl, DEVICESPECS_API_KEY: process.env.SMOKE_API_KEY || "" }, async (client) => {
   const tools = await client.listTools();
   const names = tools.tools.map((t) => t.name).sort();
   check("lists 7 tools", names.length === 7, names.join(", "));
