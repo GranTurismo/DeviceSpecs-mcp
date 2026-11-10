@@ -1,0 +1,59 @@
+{
+  "name": "@granturismo/devicespecs-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for the Device Specs API: look up, search and compare normalized smartphone specifications (10,000+ phones) from Claude, Cursor, VS Code or any MCP client.",
+  "type": "module",
+  "license": "MIT",
+  "author": "GranTurismo",
+  "homepage": "https://ds.gtgroup.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GranTurismo/DeviceSpecs-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GranTurismo/DeviceSpecs-mcp/issues"
+  },
+  "bin": {
+    "devicespecs-mcp": "dist/index.js"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "server.json"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "smoke": "node scripts/smoke.mjs",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "smartphone",
+    "phone-specs",
+    "specifications",
+    "devicespecs",
+    "gsmarena",
+    "hardware",
+    "claude",
+    "cursor",
+    "ai-agent"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.5",
+    "typescript": "^5.7.3"
+  }
+}
